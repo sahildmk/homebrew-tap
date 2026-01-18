@@ -9,6 +9,11 @@ cask "quick-ports" do
 
   app "QuickPorts.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/QuickPorts.app"]
+  end
+
   zap trash: [
     "~/Library/Preferences/com.sahildmk.QuickPorts.plist",
   ]
